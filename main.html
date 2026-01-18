@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Pollution Awareness Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f8f0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2e8b57;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="radio"], input[type="checkbox"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #228b22;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            .container { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Air Pollution Awareness Survey – Questions for Students</h1>
+        
+        <!-- Page 1: A. Basic Details -->
+        <div id="page1" class="page active">
+            <h2>A. Basic Details</h2>
+            <div class="question">
+                <label for="age">1. Age:</label>
+                <input type="text" id="age" required>
+            </div>
+            <div class="question">
+                <label for="grade">2. Class/Grade:</label>
+                <input type="text" id="grade" required>
+            </div>
+            <div class="question">
+                <label>3. Gender:</label>
+                <div class="options">
+                    <label><input type="radio" name="gender" value="Male" required> Male</label>
+                    <label><input type="radio" name="gender" value="Female"> Female</label>
+                    <label><input type="radio" name="gender" value="Other"> Other</label>
+                </div>
+            </div>
+            <button onclick="nextPage(1)">Next</button>
+        </div>
+        
+        <!-- Page 2: B. Awareness -->
+        <div id="page2" class="page">
+            <h2>B. Awareness of Air Pollution</h2>
+            <div class="question">
+                <label>4. Have you heard about air pollution?</label>
+                <div class="options">
+                    <label><input type="radio" name="heard" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="heard" value="No"> No</label>
+                </div>
+            </div>
+            <div class="question">
+                <label>5. How would you rate your knowledge about air pollution?</label>
+                <div class="options">
+                    <label><input type="radio" name="knowledge" value="Very good" required> Very good</label>
+                    <label><input type="radio" name="knowledge" value="Good"> Good</label>
+                    <label><input type="radio" name="knowledge" value="Average"> Average</label>
+                    <label><input type="radio" name="knowledge" value="Poor"> Poor</label>
+                    <label><input type="radio" name="knowledge" value="I don’t know anything"> I don’t know anything</label>
+                </div>
+            </div>
+            <div class="question">
+                <label>6. Do you think air pollution is a serious problem?</label>
+                <div class="options">
+                    <label><input type="radio" name="seriousProblem" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="seriousProblem" value="No"> No</label>
+                    <label><input type="radio" name="seriousProblem" value="Not sure"> Not sure</label>
+                </div>
+            </div>
+            <div class="question">
+                <label>7. Do you think air pollution is increasing every year?</label>
+                <div class="options">
+                    <label><input type="radio" name="increasing" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="increasing" value="No"> No</label>
+                    <label><input type="radio" name="increasing" value="Not sure"> Not sure</label>
+                </div>
+            </div>
+            <button onclick="nextPage(2)">Next</button>
+        </div>
+        
+        <!-- Page 3: C. Causes -->
+        <div id="page3" class="page">
+            <h2>C. Causes of Air Pollution</h2>
+            <div class="question">
+                <label>8. What do you think are the major causes of air pollution? (Tick all that apply)</label>
+                <div class="options">
+                    <label><input type="checkbox" name="causes" value="Vehicle smoke"> Vehicle smoke</label>
+                    <label><input type="checkbox" name="causes" value="Factory smoke"> Factory smoke</label>
+                    <label><input type="checkbox" name="causes" value="Burning waste/garbage"> Burning waste/garbage</label>
+                    <label><input type="checkbox" name="causes" value="Construction dust"> Construction dust</label>
+                    <label><input type="checkbox" name="causes" value="Smoking"> Smoking</label>
+                    <label><input type="checkbox" name="causes" value="Crop burning"> Crop burning</label>
+                    <label><input type="checkbox" name="causes" value="Firecrackers"> Firecrackers</label>
+                    <label><input type="checkbox" name="causes" value="Power plants"> Power plants</label>
+                    <label><input type="checkbox" name="causes" value="Don’t know"> Don’t know</label>
+                </div>
+            </div>
+            <div class="question">
+                <label>9. Which cause do you think contributes the most to air pollution in your area?</label>
+                <div class="options">
+                    <label><input type="radio" name="mostCause" value="Vehicles" required> Vehicles</label>
+                    <label><input type="radio" name="mostCause" value="Industries"> Industries</label>
+                    <label><input type="radio" name="mostCause" value="Burning waste"> Burning waste</label>
+                    <label><input type="radio" name="mostCause" value="Construction"> Construction</label>
+                    <label><input type="radio" name="mostCause" value="Don’t know"> Don’t know</label>
+                </div>
+            </div>
+            <button onclick="nextPage(3)">Next</button>
+        </div>
+        
+        <!-- Page 4: D. Observation & Environment -->
+        <div id="page4" class="page">
+            <h2>D. Observation & Environment</h2>
+            <div class="question">
+                <label>10. How do you think the air quality is in your area?</label>
+                <div class="options">
+                    <label><input type="radio" name="airQuality" value="Very good" required> Very good</label>
+                    <label><input type="radio" name="airQuality" value="Good"> Good</label>
+                    <label><input type="radio" name="airQuality" value="Average"> Average</label>
+                    <label><input type="radio" name="airQuality" value="Poor"> Poor</label>
+                    <label><input type="radio" name="airQuality" value="Very poor"> Very poor</label>
+                </div>
+            </div>
+            <div class="question">
+                <label>11. Can you see pollution around you (like smoke, dust, smog)?</label>
+                <div class="options">
+                    <label><input type="radio" name="seePollution" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="seePollution" value="Sometimes"> Sometimes</label>
+                    <label><input type="radio" name="seePollution" value="No"> No</label>
+                </div>
+            </div>
+            <div class="question">
+                <label>12. At what time do you notice pollution the most?</label>
+                <div class="options">
+                    <label><input type="radio" name="noticeTime" value="Morning" required> Morning</label>
+                    <label><input type="radio" name="noticeTime" value="Afternoon"> Afternoon</label>
+                    <label><input type="radio" name="noticeTime" value="Evening"> Evening</label>
+                    <label><input type="radio" name="noticeTime" value="Night"> Night</label>
+                </div>
+            </div>
+            <div class="question">
+                <label>13. Do you feel the air quality changes during festivals or winters?</label>
+                <div class="options">
+                    <label><input type="radio" name="changesSeasons" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="changesSeasons" value="No"> No</label>
+                    <label><input type="radio" name="changesSeasons" value="Not sure"> Not sure</label>
+                </div>
+            </div>
+            <button onclick="nextPage(4)">Next</button>
+        </div>
+        
+        <!-- Page 5: E. Health Awareness -->
+        <div id="page5" class="page">
+            <h2>E. Health Awareness</h2>
+            <div class="question">
+                <label>14. Do you know air pollution can affect health?</label>
+                <div class="options">
+                    <label><input type="radio" name="healthKnow" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="healthKnow" value="No"> No</label>
+                    <label><input type="radio" name="healthKnow" value="Not sure"> Not sure</label>
+                </div>
+            </div>
+            <div class="question">
+                <label>15. Which health issues do you think are caused by air pollution? (Tick all that apply)</label>
+                <div class="options">
+                    <label><input type="checkbox" name="healthIssues" value="Cough"> Cough</label>
+                    <label><input type="checkbox" name="healthIssues" value="Breathing problems"> Breathing problems</label>
+                    <label><input type="checkbox" name="healthIssues" value="Headache"> Headache</label>
+                    <label><input type="checkbox" name="healthIssues" value="Asthma"> Asthma</label>
+                    <label><input type="checkbox" name="healthIssues" value="Eye irritation"> Eye irritation</label>
+                    <label><input type="checkbox" name="healthIssues" value="Chest pain"> Chest pain</label>
+                    <label><input type="checkbox" name="healthIssues" value="Fatigue"> Fatigue</label>
+                    <label><input type="checkbox" name="healthIssues" value="Don’t know"> Don’t know</label>
+                </div>
+            </div>
+            <button onclick="submitSurvey()">Submit</button>
+        </div>
+        
+        <!-- Page 6: Thank You -->
+        <div id="page6" class="page">
+            <h2>Thank You!</h2>
+            <p>Your responses have been submitted successfully. We appreciate your participation in the Air Pollution Awareness Survey.</p>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 5;
+
+        function nextPage(page) {
+            // Basic validation
+            const inputs = document.querySelectorAll(`#page${page} input[required]`);
+            let valid = true;
+            inputs.forEach(input => {
+                if (!input.checkValidity()) valid = false;
+            });
+            if (!valid) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Navigate
+            document.getElementById(`page${page}`).classList.remove('active');
+            if (page < totalPages) {
+                currentPage = page + 1;
+                document.getElementById(`page${currentPage}`).classList.add('active');
+            }
+        }
+
+        async function submitSurvey() {
+            // Collect responses up to Question 15
+            const responses = {
+                'A. Basic Details': {
+                    '1. Age': document.getElementById('age').value,
+                    '2. Class/Grade': document.getElementById('grade').value,
+                    '3. Gender': document.querySelector('input[name="gender"]:checked')?.value || ''
+                },
+                'B. Awareness of Air Pollution': {
+                    '4. Have you heard about air pollution?': document.querySelector('input[name="heard"]:checked')?.value || '',
+                    '5. How would you rate your knowledge about air pollution?': document.querySelector('input[name="knowledge"]:checked')?.value || '',
+                    '6. Do you think air pollution is a serious problem?': document.querySelector('input[name="seriousProblem"]:checked')?.value || '',
+                    '7. Do you think air pollution is increasing every year?': document.querySelector('input[name="increasing"]:checked')?.value || ''
+                },
+                'C. Causes of Air Pollution': {
+                    '8. What do you think are the major causes of air pollution? (Tick all that apply)': Array.from(document.querySelectorAll('input[name="causes"]:checked')).map(cb => cb.value),
+                    '9. Which cause do you think contributes the most to air pollution in your area?': document.querySelector('input[name="mostCause"]:checked')?.value || ''
+                },
+                'D. Observation & Environment': {
+                    '10. How do you think the air quality is in your area?': document.querySelector('input[name="airQuality"]:checked')?.value || '',
+                    '11. Can you see pollution around you (like smoke, dust, smog)?': document.querySelector('input[name="seePollution"]:checked')?.value || '',
+                    '12. At what time do you notice pollution the most?': document.querySelector('input[name="noticeTime"]:checked')?.value || '',
+                    '13. Do you feel the air quality changes during festivals or winters?': document.querySelector('input[name="changesSeasons"]:checked')?.value || ''
+                },
+                'E. Health Awareness': {
+                    '14. Do you know air pollution can affect health?': document.querySelector('input[name="healthKnow"]:checked')?.value || '',
+                    '15. Which health issues do you think are caused by air pollution? (Tick all that apply)': Array.from(document.querySelectorAll('input[name="healthIssues"]:checked')).map(cb => cb.value)
+                },
+                'Submitted on': new Date().toLocaleString()
+            };
+
+            // Send to Formspree (replace with your actual endpoint)
+            const formspreeEndpoint = 'https://formspree.io/f/xykkepnr'; // Replace 'your-form-id' with your Formspree form ID
+            try {
+                const response = await fetch(formspreeEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(responses)
+                });
+                if (response.ok) {
+                    // Hide Page 5 and show Thank You page
+                    document.getElementById('page5').classList.remove('active');
+                    document.getElementById('page6').classList.add('active');
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                alert('Error submitting survey. Please try again or contact support.');
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>
